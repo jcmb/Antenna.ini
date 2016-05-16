@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Antenna Measurement</TITLE></HEAD>
+<BODY>
+<h1>Antenna Measurements</h1>
+<script type="text/javascript">
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var HOffset=getParameterByName("HOffset")
+if (HOffset) {
+    document.write("Horizontal Offset: ")
+    document.write(HOffset)
+    }
+else {
+    document.write("Error: Horizontal Offset Not provided, using 0")
+    HOffset=0
+    }
+document.write("<br>")
+
+var VOffset=getParameterByName("VOffset")
+if (VOffset) {
+    document.write("Vertical Offset: ")
+    document.write(VOffset)
+    }
+else {
+    document.write("Error: Vertical Offset Not provided, using 0")
+    VOffset=0
+    }
+
+document.write("<p/>")
+
+function compute_Antenna_Height() {
+var height = document.getElementById("height").value * 1.0
+
+if (height < HOffset) {
+    document.getElementById("result").innerHTML="Invalid antenna height, must be at least " + HOffset
+}
+else {
+    var reduced_height=Math.sqrt(Math.pow(height,2)-Math.pow(HOffset,2))+(VOffset*1.0)
+    document.getElementById("result").innerHTML=reduced_height
+    }
+}
+
+</SCRIPT>
+Measured Antenna Height (m): <input type="text" name="height" id="height" value="2.0">
+<input type="submit" value="Calculate Antenna Height" onclick="compute_Antenna_Height()">
+
+<p/>
+True Antenna Height: <span id="result"></span>
+</BODY>
+</HTML>
