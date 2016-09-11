@@ -19,7 +19,7 @@ import math
 import cgi
 
 def parse_antenna_ini (File_Name):
-   file=open("/var/www/Antenna.ini/"+File_Name,"r")
+   file=open("/var/www/html/Antenna.ini/"+File_Name,"r")
    Biases=[]
    Elev_Labels=[]
    Have_L1=False
@@ -299,7 +299,9 @@ def create_html(Title,File_Name):
       img_data=create_plot_radial(Title+" Radial (L2)",Az_Step,L2_Biases,Elev_Start,Elev_Stop,Elev_Step)
       output_graph(Title+" (L2 Radial)",img_data)
 
-      html_footer()
+      
+   print '<p/><a href=\"/Antenna.ini/'+File_Name+'\">Raw File ('+File_Name+')</a>'
+   html_footer()
 
 if __name__ == "__main__":
 #   create_html("Zephyr 3 Rover","t10500010.pct")

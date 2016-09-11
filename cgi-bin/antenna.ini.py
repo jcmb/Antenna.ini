@@ -27,7 +27,7 @@ args = parser.parse_args()
 #print args
 
 config = ConfigParser.ConfigParser()
-if  (config.read('/var/www/Antenna.ini/antenna.ini') == []) :
+if  (config.read('/var/www/html/Antenna.ini/antenna.ini') == []) :
    print "Could not open antenna.ini"
    quit(10)
 
@@ -211,19 +211,19 @@ if args.antenna:
       print "<tbody>"
       try:
          if config.get(args.antenna,"PhaseCorrTable"):
-            print '<tr><td>Trimble APC Model<td> <a target="_blank" href="/cgi-bin/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"PhaseCorrTable"))
+            print '<tr><td>Trimble APC Model<td> <a target="_blank" href="/cgi-bin/Antenna.ini/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"PhaseCorrTable"))
       except:
          pass
 
       try: 
          if config.get(args.antenna,"NGSCorrTable"):
-            print '<tr><td>NGS APC Model<td> <a target="_blank" href="/cgi-bin/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"NGSCorrTable"))
+            print '<tr><td>NGS APC Model<td> <a target="_blank" href="/cgi-bin/Antenna.ini/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"NGSCorrTable"))
       except:
          pass
 
       try: 
          if config.get(args.antenna,"IFECorrTable"):
-            print '<tr><td>IFE APC Model<td> <a target="_blank" href="/cgi-bin/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"IFECorrTable"))
+            print '<tr><td>IFE APC Model<td> <a target="_blank" href="/cgi-bin/Antenna.ini/pct_html.py?Name={0}&File={1}">{1}</a></td></tr>'.format(config.get(args.antenna,"Name"),config.get(args.antenna,"IFECorrTable"))
       except:
          pass
 

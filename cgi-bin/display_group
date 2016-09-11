@@ -8,8 +8,20 @@ Content-type: text/html
    <meta charset="utf-8" />
    <title>Trimble Antenna.ini Group Viewer</title>
    <meta name="generator" content="BBEdit 10.5" />
-</head>
-<body>
+<link rel="stylesheet" type="text/css" href="/css/tcui-styles.css">                                                                                            
+</head>                                                                                                                                                        
+<body class="page">                                                                                                                                            
+<div class="container clearfix">                                                                                                                               
+  <div style="padding: 10px 10px 10px 0 ;"> <a href="http://construction.trimble.com/">                                                                        
+        <img src="/images/trimble-logo.jpg" alt="Trimble Logo" id="logo"> </a>                                                                                 
+      </div>                                                                                                                                                   
+  <!-- end #logo-area -->                                                                                                                                      
+</div>                                                                                                                                                         
+<div id="top-header-trim"></div>                                                                                                                               
+<div id="content-area">                                                                                                                                        
+<div id="content">                                                                                                                                             
+<div id="main-content" class="clearfix">                                                                                                                       
+
 <form action="display_antenna" method="GET">
 HEAD
 
@@ -20,6 +32,9 @@ cat <<EOF1
 <br/>
 <button type="submit">Display antenna</button>
 </form>
+</div>                                                                                             
+</div>                                                                                             
+</div>  
 </body>
 </html>
 EOF1

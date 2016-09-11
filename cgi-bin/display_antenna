@@ -8,8 +8,19 @@ Content-type: text/html
    <meta charset="utf-8" />
    <title>Trimble Antenna.ini Antenna Viewer</title>
    <meta name="generator" content="BBEdit 10.5" />
-</head>
-<body>
+<link rel="stylesheet" type="text/css" href="/css/tcui-styles.css">                                
+</head>                                                                                            
+<body class="page">                                                                                
+<div class="container clearfix">                                                                   
+  <div style="padding: 10px 10px 10px 0 ;"> <a href="http://construction.trimble.com/">            
+        <img src="/images/trimble-logo.jpg" alt="Trimble Logo" id="logo"> </a>                     
+      </div>                                                                                       
+  <!-- end #logo-area -->                                                                          
+</div>                                                                                             
+<div id="top-header-trim"></div>                                                                   
+<div id="content-area">                                                                            
+<div id="content">                                                                                 
+<div id="main-content" class="clearfix">                                                           
 HEAD
 
 antenna=`echo "$QUERY_STRING" | sed -n 's/^.*antenna=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"| sed "s/+/ /g"| sed "s/%2F/\//g"`
@@ -17,6 +28,9 @@ antenna=`echo "$QUERY_STRING" | sed -n 's/^.*antenna=\([^&]*\).*$/\1/p' | sed "s
 ./antenna.ini.py --html --antenna "$antenna"
 cat <<EOF1
 <br/>
+</div>                                                                                             
+</div>                                                                                             
+</div>  
 </body>
 </html>
 EOF1
