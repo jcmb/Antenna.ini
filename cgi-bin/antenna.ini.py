@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import cgitb
-cgitb.enable()
+#cgitb.enable()
 
 import configparser
 import argparse
@@ -93,7 +93,7 @@ if args.group:
    antenna_type={}
 
    while antenna:
-      antenna_section_names[antenna_index]=string.split(antenna,",")[0]
+      antenna_section_names[antenna_index]=antenna.split(",")[0]
 
       try:
          antenna=config.get(args.group,"Ant"+str(antenna_index))
@@ -198,8 +198,8 @@ if args.antenna:
    method_index=0
    method=config.get(args.antenna,"MeasMethod"+str(method_index))
    while method:
-      method_details=string.split(method,"=")[0]
-      (H_Offset,V_Offset,Tape_Offset,Method_Name)=string.split(method_details,",",3) # Some of the methods may have , in them so we have to use a max splits
+      method_details=method.split("=")[0]
+      (H_Offset,V_Offset,Tape_Offset,Method_Name)=method_details.split(",",3) # Some of the methods may have , in them so we have to use a max splits
       Method_Name=Method_Name.strip("\"")
 
       if args.html:
