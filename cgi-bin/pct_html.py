@@ -74,24 +74,24 @@ def parse_antenna_ini (File_Name):
                               match=re.match("( *[-+]?\d*\.\d+|\d+)",line)
    #                           print numbers
    #print Elev_Start,Elev_Stop,Elev_Step
-   for elev in xrange(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
+   for elev in range(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
       Elev_Labels.append(elev)
 
    i=0
 
-   for Az in xrange(0,360,Az_Step):
+   for Az in range(0,360,Az_Step):
       L1_Biases[Az]=[]
       L2_Biases[Az]=[]
 
       if Have_L1:
-         for elev in xrange(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
+         for elev in range(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
             #   print elev, Biases[i]
             L1_Biases[Az].append(Biases[i])
             i=i+1
       #   print "L1: ", L1_Biases
 
       if Have_L2:
-         for elev in xrange(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
+         for elev in range(Elev_Start,Elev_Stop+Elev_Step,Elev_Step): #We need to make sure we get the last item in the list
             L2_Biases[Az].append(Biases[i])
          #   print elev, Biases[i]
             i=i+1
@@ -118,7 +118,7 @@ def create_plot (Title,L1,L2,Az_Step,Elev_Labels,L1_Biases,L2_Biases):
 
    if Have_L1:
       if Az_Step != 360:
-         for Az in xrange(0,360,Az_Step):
+         for Az in range(0,360,Az_Step):
             plt.plot(Elev_Labels,L1_Biases[Az],label="L1 " + str(Az))
       else:
          plt.plot(Elev_Labels,L1_Biases[0],label="L1" )
@@ -126,7 +126,7 @@ def create_plot (Title,L1,L2,Az_Step,Elev_Labels,L1_Biases,L2_Biases):
 
    if Have_L2:
       if Az_Step != 360:
-         for Az in xrange(0,360,Az_Step):
+         for Az in range(0,360,Az_Step):
             plt.plot(Elev_Labels,L2_Biases[Az],label="L2 " + str(Az))
       else:
          plt.plot(Elev_Labels,L2_Biases[0],label="L2")
@@ -148,9 +148,9 @@ def create_plot (Title,L1,L2,Az_Step,Elev_Labels,L1_Biases,L2_Biases):
 
 
 def html_header(Title,Filename):
-   print '<html><head><link rel="stylesheet" type="text/css" href="/css/tcui-styles.css"><style type="text/css">th, td {width: 80px;};</style><style type="text/css">img {display: block; margin-left: auto; margin-right: auto ;};</style>'
-   print "<title>Antenna Phase Biases for {} ({})</title></head>".format(Title,Filename)
-   print """
+   print('<html><head><link rel="stylesheet" type="text/css" href="/css/tcui-styles.css"><style type="text/css">th, td {width: 80px;};</style><style type="text/css">img {display: block; margin-left: auto; margin-right: auto ;};</style>')
+   print("<title>Antenna Phase Biases for {} ({})</title></head>".format(Title,Filename))
+   print("""
 <body class="page">
 <div class="container clearfix">
   <div style="padding: 10px 10px 10px 0 ;"> <a href="http://construction.trimble.com/">
@@ -162,21 +162,21 @@ def html_header(Title,Filename):
 <div id="content-area">
 <div id="content">
 <div id="main-content" class="clearfix">
-"""
-   print "<h1 align=\"center\">Antenna Phase Biases for {}<br/>{}</h1><p/>".format(Title,Filename)
+""")
+   print("<h1 align=\"center\">Antenna Phase Biases for {}<br/>{}</h1><p/>".format(Title,Filename))
 
 def html_footer():
-   print """
+   print("""
 </body>
 </html>
-"""
+""")
 
 def output_graph (GraphName,img_data):
 
-   print "<img src=\"data:image/jpg;base64,"
+   print("<img src=\"data:image/jpg;base64,")
 
-   print img_data
-   print '" alt="'+ GraphName + '"/><p/>'
+   print(img_data)
+   print('" alt="'+ GraphName + '"/><p/>')
 
 
 def plot_polar_contour(Title,values, azimuths, zeniths):
@@ -227,13 +227,13 @@ def plot_polar_contour(Title,values, azimuths, zeniths):
 def create_plot_radial(Title,Az_Step,Biases,Elev_Start,Elev_Stop,Elev_Step):
 
    Az_Labels=[]
-   for Az in xrange(0,360+Az_Step,Az_Step): #We need to make sure we get the last item in the list
+   for Az in range(0,360+Az_Step,Az_Step): #We need to make sure we get the last item in the list
       Az_Labels.append(Az)
 
    flat=[]
    Az_Index=1
    Bias_Index=1
-   for Az in xrange(0,360+Az_Step,Az_Step):
+   for Az in range(0,360+Az_Step,Az_Step):
       if Az != 360 :
          Bias_Index=1
          for Bias in Biases[Az]:
@@ -247,7 +247,7 @@ def create_plot_radial(Title,Az_Step,Biases,Elev_Start,Elev_Stop,Elev_Step):
       Az_Index+=1
 
    Elev_Reverse_Labels=[]
-   for elev in xrange(Elev_Stop,Elev_Start-Elev_Step,-Elev_Step): #We need to make sure we get the last item in the list
+   for elev in range(Elev_Stop,Elev_Start-Elev_Step,-Elev_Step): #We need to make sure we get the last item in the list
       Elev_Reverse_Labels.append(elev)
 
 #   pprint (Elev_Reverse_Labels)
@@ -265,15 +265,15 @@ def create_plot_radial(Title,Az_Step,Biases,Elev_Start,Elev_Stop,Elev_Step):
    return(img_data)
 
 def output_offsets(Title,L1_Offsets,L2_Offsets):
-   print "<table align=\"center\" border='1'><caption><b>{} (mm)</b></caption>".format(Title)
-   print "<thead><th>Band</th><th>Northing</th><th>Easting</th><th>Up</th><th>2D</th><th>Spin Error</th></thead>"
+   print("<table align=\"center\" border='1'><caption><b>{} (mm)</b></caption>".format(Title))
+   print("<thead><th>Band</th><th>Northing</th><th>Easting</th><th>Up</th><th>2D</th><th>Spin Error</th></thead>")
    if L1_Offsets != None:
-      print "<tr><td>L1</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td></th>".format(
-            L1_Offsets[0],L1_Offsets[1],L1_Offsets[2],math.sqrt(L1_Offsets[0]**2+L1_Offsets[1]**2), 2*math.sqrt(L1_Offsets[0]**2+L1_Offsets[1]**2))
+      print("<tr><td>L1</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td></th>".format(
+            L1_Offsets[0],L1_Offsets[1],L1_Offsets[2],math.sqrt(L1_Offsets[0]**2+L1_Offsets[1]**2), 2*math.sqrt(L1_Offsets[0]**2+L1_Offsets[1]**2)))
    if L2_Offsets != None:
-      print "<tr><td>L2</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td></th>".format(
-            L2_Offsets[0],L2_Offsets[1],L2_Offsets[2],math.sqrt(L2_Offsets[0]**2+L2_Offsets[1]**2), 2*math.sqrt(L2_Offsets[0]**2+L2_Offsets[1]**2))
-   print "</table></br>"
+      print("<tr><td>L2</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td><td>{:.1f}</td></th>".format(
+            L2_Offsets[0],L2_Offsets[1],L2_Offsets[2],math.sqrt(L2_Offsets[0]**2+L2_Offsets[1]**2), 2*math.sqrt(L2_Offsets[0]**2+L2_Offsets[1]**2)))
+   print("</table></br>")
 
 
 def create_html(Title,File_Name):
@@ -301,7 +301,7 @@ def create_html(Title,File_Name):
       output_graph(Title+" (L2 Radial)",img_data)
 
       
-   print '<p/><a href=\"/Antenna.ini/'+File_Name+'\">Raw File ('+File_Name+')</a>'
+   print('<p/><a href=\"/Antenna.ini/'+File_Name+'\">Raw File ('+File_Name+')</a>')
    html_footer()
 
 if __name__ == "__main__":
@@ -309,13 +309,13 @@ if __name__ == "__main__":
 #   create_html("Zephyr 3 Rover","t10500010.ife")
 #   create_html("Zephyr 3 Base","t11500010.pct")
 #   create_html("Zephyr 3 Base","t11500010.ife")
-   print "Content-Type: text/html"     # HTML is following
-   print                               # blank line, end of headers
+   print("Content-Type: text/html")     # HTML is following
+   print()                               # blank line, end of headers
    cgitb.enable()
    form = cgi.FieldStorage()
    if "Name" not in form or "File" not in form:
-      print "<H1>Internal Error</H1>"
-      print "Please fill in the Name and File fields."
+      print("<H1>Internal Error</H1>")
+      print("Please fill in the Name and File fields.")
    else:
       create_html(form["Name"].value,form["File"].value)
       
