@@ -1,10 +1,13 @@
 #! /usr/bin/env python3
+
 import cgitb
 cgitb.enable()
 
 import configparser
 import argparse
 import string
+from pprint import pprint
+import sys
 
 parser = argparse.ArgumentParser(description='Display Information on antenna.ini.')
 
@@ -26,10 +29,13 @@ args = parser.parse_args()
 #print args.accumulate(args.integers)
 #print args
 
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(strict=False)
+
+
 if  (config.read('/var/www/html/Antenna.ini/antenna.ini') == []) :
-   print("Could not open antenna.ini")
-   quit(10)
+   if  (config.read('/Users/gkirk/Downloads/cfgfiles/antenna.ini') == []) :
+      print("Could not open antenna.ini")
+      quit(10)
 
 if args.version :
    if args.html :
