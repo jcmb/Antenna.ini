@@ -83,25 +83,28 @@ if args.group:
    antenna_index=1;
    antenna=config.get(args.group,"Ant"+str(antenna_index))
    antenna_names={}
+   antenna_section_names={}
    antenna_type={}
 
    while antenna:
-      antenna_index+=1
-      antenna_name=string.split(antenna,",")[0]
+      antenna_section_names[antenna_index]=string.split(antenna,",")[0]
 
       try:
          antenna=config.get(args.group,"Ant"+str(antenna_index))
-         antenna_names[antenna_index]=config.get(antenna_name,"Name")
-         antenna_type[antenna_index]=config.get(antenna_name,"Type")
+         antenna_names[antenna_index]=config.get(antenna_section_names[antenna_index],"Name")
+         antenna_type[antenna_index]=config.get(antenna_section_names[antenna_index],"Type")
       except ConfigParser.NoOptionError:
          antenna=""
+         
+      antenna_index+=1
 
 
    for antenna in sorted(antenna_names,key=antenna_names.get):
       if args.html:
-          print '<option value="' + antenna_names[antenna] + '">' + antenna_names[antenna] + '</option>'
+          print '<option value="' + antenna_section_names[antenna] + '">' + antenna_names[antenna] + '</option>'
       else:
-          print string.split(antenna,",")[0]
+          print antenna_section_names[antenna] + ': ' + antenna_names[antenna]
+
          
    antenna_index-=1
 

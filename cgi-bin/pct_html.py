@@ -216,7 +216,8 @@ def plot_polar_contour(Title,values, azimuths, zeniths):
     ax.set_theta_direction("clockwise")
     plt.title("Antenna Phase Biases: " + Title)
 
-    ax.set_rgrids([30,60],labels=["30","60"],angle=[0,0],fmt=None,visible=False)
+#    ax.set_rgrids([30,60],labels=["30","60"],angle=[0,0],fmt=None,visible=False)
+    ax.set_rgrids((30,60),("30","60"))
     cax = plt.contourf(theta, r, values, 30)
     cb = fig.colorbar(cax)
     cb.set_label("Bias (mm)")
