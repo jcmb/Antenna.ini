@@ -57,6 +57,7 @@ def read_antenna_ini(antenna_ini_path,HTML_File_Path):
 
    Antenna_Version=config.get("AntDatabaseInfo","Version")
 
+   print("{}/{}.html".format(HTML_File_Path,Antenna_Version))
    HTML_File=open("{}/{}.html".format(HTML_File_Path,Antenna_Version),"w")
 
    HTML_Unit.output_html_header(HTML_File,"Antenna.INI Antennas for file version {}".format(Antenna_Version),120)
@@ -122,7 +123,7 @@ def main():
 
    parser.add_argument("file", help='Antenna.ini file')
 
-   parser.add_argument("HTML", help='HTML Output file')
+   parser.add_argument("HTML", help='HTML Output directory')
 
 
    args = parser.parse_args()
